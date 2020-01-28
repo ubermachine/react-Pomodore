@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Russo+One');
+
+.App-header {
+  background-color:rgb(63, 48, 48);
+  min-height: 100vh;
+  
+}
+#inp{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5px;
+  textarea{
+    width: 99%;
+    min-height: 100px;
+    margin-bottom: -5px;
+    resize: vertical;
+    padding-left: 5px;
+    padding-top: 5px;
+    font-size: 12px;
+    border-radius: 5px;
+    border-color: rgb(10, 136, 62);
+    
+    }
+}
+#opt{
+text-align: left;
+padding:0px 10px 0px 10px;
+color: blanchedalmond;
+}
+h3{
+  text-align: center;
+  color: rgb(87, 197, 146);
+}
+
+#preview {
+  blockquote {
+    border-left: 3px solid rgb(23, 206, 206);
+    color: rgb(191, 221, 221);
+    padding-left: 5px;
+    margin-left: 25px;
+  }
+
+  code {
+    background: white;
+    padding: 1px 4px 2px 4px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  pre {
+    background: white;
+    padding: 5px 0 5px 5px;
+  }
+
+  h1 {
+    border-bottom: 2px solid white;
+  }
+
+  h2 {
+    border-bottom: 1px solid white;
+  }
+  td,
+  th {
+    border: 2px solid rgb(44, 11, 122);
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
