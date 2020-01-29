@@ -1,70 +1,52 @@
-@import url('https://fonts.googleapis.com/css?family=Russo+One');
-
-.App-header {
-  background-color:rgb(63, 48, 48);
-  min-height: 100vh;
-  
-}
-#inp{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 5px;
-  textarea{
-    width: 99%;
-    min-height: 100px;
-    margin-bottom: -5px;
-    resize: vertical;
-    padding-left: 5px;
-    padding-top: 5px;
-    font-size: 12px;
-    border-radius: 5px;
-    border-color: rgb(10, 136, 62);
-    
-    }
-}
-#opt{
-text-align: left;
-padding:0px 10px 0px 10px;
-color: blanchedalmond;
-}
-h3{
+.App {
   text-align: center;
-  color: rgb(87, 197, 146);
+  font-family: 'Segoe UI', 'Open Sans', sans-serif;
+  font-weight: bolder;
+  background:rgb(8, 139, 190);
 }
 
-#preview {
-  blockquote {
-    border-left: 3px solid rgb(23, 206, 206);
-    color: rgb(191, 221, 221);
-    padding-left: 5px;
-    margin-left: 25px;
-  }
+#drum-machine {
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  background:black;
+  display: flex;
+  align-items: center;
+  width: 850px;
+  height: 100vh;
+  border-radius: 200px;
+}
 
-  code {
-    background: white;
-    padding: 1px 4px 2px 4px;
-    font-size: 12px;
-    font-weight: bold;
-  }
+#drum-container {
+  margin: 50px;
+  display: grid;
+  grid-template: repeat(3, 100px) / repeat(3, 100px);
+  grid-gap: 20px;
+  justify-content: center;
+  background: #0db4b9;
+  padding: 25px;
+  border-radius: 50px;
+}
 
-  pre {
-    background: white;
-    padding: 5px 0 5px 5px;
-  }
+.drum-pad {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(98, 87, 146);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  font-size: 30px;
+}
 
-  h1 {
-    border-bottom: 2px solid white;
-  }
 
-  h2 {
-    border-bottom: 1px solid white;
-  }
-  td,
-  th {
-    border: 2px solid rgb(44, 11, 122);
-    padding-left: 5px;
-    padding-right: 5px;
-  }
+
+#display {
+  background: #14027c;
+  width: 160px;
+  padding: 15px;
+  border-radius: 20px;
+  box-shadow: 0 0 2px 2px #3d3d3d inset;
+  color: rgb(220, 220, 220);
+  font-size: 20px;
 }
