@@ -1,18 +1,18 @@
 import React from 'react';
 //import ReactDOM from 'react-dom'
-import './App.scss';
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 //import $ from "jQuery";
-import Drum from './components/drum'
+import Calculator from './components/calculator'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-      
 
-        <Drum/>
+        <Calculator/>
       </header>
+      
     </div>
   );
 }
