@@ -1,6 +1,8 @@
 import React  from 'react'
-let decflag=0
-let zerflag=0
+let decflag=0;
+let zerflag=0;
+let funcflag=0;
+let stater=0;
 class Calculator extends React.Component{
     constructor(props){
         super(props);
@@ -20,24 +22,57 @@ class Calculator extends React.Component{
         const functest=/[/*\-+]/
         const zertest=/^0/
         if(numtest.test(event.target.innerHTML)){
-            if(this.state.current[0]=='0' && event.target.innerHTML=='0'){
+            if(!this.state.func){
                 this.setState({
-                    current:this.state.current
-                })
-               
-            }else{this.setState({
-                current:this.state.current+event.target.innerHTML
-            })}
-
-                
-        }else if(dec.test(event.target.innerHTML) && decflag==0){
+                current:this.state.current+event.target.innerHTML,
+                output:parseFloat(this.state.current+event.target.innerHTML)
+            })
+            stater=1;
+        }else{
+            this.setState({
+                nextip:this.state.nextip+event.target.innerHTML,
+                output:parseFloat(this.state.nextip+event.target.innerHTML)
+            })
+            stater=2
+            
+        }          
+        }else if(dec.test(event.target.innerHTML) && decflag==0 && this.state.current.length>0){
             decflag=1
             this.setState({
-                current:this.state.current+event.target.innerHTML
+                current:this.state.current+event.target.innerHTML,
+                output:parseFloat(this.state.current+event.target.innerHTML)
             })
         
             
         }else if(functest.test(event.target.innerHTML)){
+
+            this.setState({
+                func:event.target.innerHTML})
+        
+    }else if(event.target.id=="equals"){
+        let a=parseFloat(this.state.current)
+        let b=parseFloat(this.state.nextip)
+
+        switch(this.state.func){
+            case '*':
+                this.setState({
+                    output:a*b,
+
+                })
+                break;
+            default:
+
+        }
+
+    
+}else if(event.target.innerHTML=='C'){
+        this.setState({
+            current:'',
+            nextip:'',
+            func:'',
+            output:0
+        })
+        dec=0
 
         
     }
@@ -48,7 +83,7 @@ class Calculator extends React.Component{
             <div id="caldisplay">
             <button onClick={this.getInput} id="clear">C</button>
             <button id="equals" onClick={this.getInput}>=</button>
-            <div id="display">{this.state.current}</div>
+            <div id="display">{(this.state.current)}d{(this.state.nextip)}d{(this.state.output)}</div>
             <button onClick={this.getInput} id="one">1</button>
             <button onClick={this.getInput} id="two">2</button>
             <button  onClick={this.getInput} id="three">3</button>
