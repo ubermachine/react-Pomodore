@@ -9,6 +9,7 @@ class Calculator extends React.Component{
             current:'',
             nextip:'',
             func:'',
+            minus:0,
             output:0
         }
             this.getInput=this.getInput.bind(this)
@@ -76,15 +77,23 @@ class Calculator extends React.Component{
             decflag1=0;
             decflag2=0;
         }
-        else if(functest.test(event.target.innerHTML)&&!this.state.nextip){
-           
+        else if(functest.test(event.target.innerHTML)&&(!this.state.nextip||this.state.nextip=="-")){
+            if(this.state.func && event.target.innerHTML=="-" ){
+                this.setState({
+                    minus:1,
+                    nextip:"-"+this.state.nextip
+                })
+            }
+            else{
             this.setState({
                 func:event.target.innerHTML,
+                nextip:""
             }
-            )
+            )}
+
         
     }
-    else if (event.target.innerHTML==="=" || (event.target.innerHTML!="." &&functest.test(event.target.innerHTML)&&this.state.nextip)){
+    else if (event.target.innerHTML==="=" || (event.target.innerHTML!="." &&functest.test(event.target.innerHTML)&&this.state.nextip&&this.state.nextip!="-")){
         let a=parseFloat(this.state.current);
         let b=parseFloat(this.state.nextip);
         switch(this.state.func){
@@ -124,7 +133,12 @@ class Calculator extends React.Component{
                    
                 })
             break;
-            default:                
+            default:   
+            this.setState({
+                func:event.target.innerHTML,
+                current:this.state.output
+
+            })             
 
 
 
@@ -136,27 +150,31 @@ class Calculator extends React.Component{
     render(){
         return (
             <div id="caldisplay">
-            <button onClick={this.getInput} id="clear">C</button>
             <button id="equals" onClick={this.getInput}>=</button>
             <div id="display">{(this.state.output)}</div>
             <button onClick={this.getInput} id="one">1</button>
             <button onClick={this.getInput} id="two">2</button>
             <button  onClick={this.getInput} id="three">3</button>
+            <button onClick={this.getInput} id="clear">C</button>
             <button  onClick={this.getInput} id="four">4</button>
             <button  onClick={this.getInput} id="five">5</button>
             <button  onClick={this.getInput} id="six">6</button>
+            <button   onClick={this.getInput} id="subtract">-</button>
             <button  onClick={this.getInput} id="seven">7</button>
             <button  onClick={this.getInput} id="eight">8</button>
             <button  onClick={this.getInput} id="nine">9</button>
-            <button  onClick={this.getInput} id="zero">0</button>
             <button  onClick={this.getInput} id="add">+</button>
-            <button   onClick={this.getInput} id="subtract">-</button>
+            <button  onClick={this.getInput}  id="decimal">.</button>
+            <button  onClick={this.getInput} id="zero">0</button>
+
+
             <button   onClick={this.getInput} id="multiply">*</button>
             <button   onClick={this.getInput} id="divide">/</button>
-            <button  onClick={this.getInput}  id="decimal">.</button>
-            <button id="equals" onClick={this.getInput}>=</button>
+           
             
-            </div>
+            
+        
+    </div>
         )
     }
 }
