@@ -10,9 +10,6 @@ class Pomodoro extends React.Component{
         this.allend=0;
         this.breaknotleft=0;
         this.handleClick=this.handleClick.bind(this)
-
-        //this.handleTime=this.handleTime.bind(this)
- 
         this.handleTimer=this.handleTimer.bind(this)
         this.countDown=this.countDown.bind(this)
         this.state={
@@ -107,19 +104,17 @@ class Pomodoro extends React.Component{
         })
     }}
     
-    handleTimer(event){
+    handleTimer(state){
         this.setState(state=>({
             running:!state.running,
+            label:"session on"
             
         }))
         if(this.state.running){
-            this.setState((state)=>({
-                label:"session on"
-
-            }))
+            this.sessionstarted=1;
         }
 
-        this.state.running?clearInterval(this.timer):this.timer=setInterval(this.countDown,1000)
+        this.state.running&&this.sessionstarted==1?clearInterval(this.timer):this.timer=setInterval(this.countDown,1000)
         
         
 
@@ -189,23 +184,28 @@ class Pomodoro extends React.Component{
 
     render(){
         return (
-            <div id="clock">
-                <audio  id='beep'  src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" preload="auto" ></audio>
-                <div  id='break-label'>Break Length</div>
-                <div id="session-label">Session Length</div>
-                <button onClick={this.handleClick}  id="break-decrement">BD</button>
-                <button onClick={this.handleClick}  id='session-decrement'>SD</button>
-
-                <button  onClick={this.handleClick} id='break-increment'>BI</button>
-                <button onClick={this.handleClick}  id='session-increment'>SI</button>
-                <div id='break-length'>{this.state.break}</div>
-               <div id='session-length'>{this.state.session}</div>
-                <div id='timer-label'>{this.state.label}</div>
-               <div id='time-left'>{this.state.min}:{this.state.sec}</div>
-                <button onClick={this.handleTimer}   id='start_stop'>Play</button>
-                <button  onClick={this.handleClick} id='reset'>R</button>
-
             
+            <div id="clock">
+                <div class="title">Pomodore a day keeps laziness away
+                </div>
+                <div id="container">
+                <audio  id='beep'  src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" preload="auto" ></audio>
+                <div class='labelbois'>
+                <div  id='break-label'>Break<br/>
+                <button onClick={this.handleClick}  id="break-decrement"><i class="fas fa-arrow-circle-down"></i></button>
+                <button  onClick={this.handleClick} id='break-increment'><i class="fas fa-arrow-circle-up"></i></button>
+                <div id='break-length'>{this.state.break}</div></div>
+                <div id="session-label">Session<br/>
+                <button onClick={this.handleClick}  id='session-decrement'><i class="fas fa-arrow-circle-down"></i></button>
+                <button onClick={this.handleClick}  id='session-increment'><i class="fas fa-arrow-circle-up"></i></button>
+                <div id='session-length'>{this.state.session}</div></div></div>
+               <div class='timebois'>
+                <div id='timer-label'>{this.state.label}</div>
+               <div id='time-left'>{this.state.min}:{this.state.sec}</div></div>
+                <button onClick={this.handleTimer}   id='start_stop'><i class="fas fa-play-circle"></i></button>
+                <button  onClick={this.handleClick} id='reset'><i class="fas fa-redo"></i></button>
+
+            </div>
             </div>
 
         )
