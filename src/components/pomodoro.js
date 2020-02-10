@@ -186,24 +186,28 @@ class Pomodoro extends React.Component{
         return (
             
             <div id="clock">
-                <div class="title">Pomodore a day keeps laziness away
+                <div className="title">Pomodore a day keeps laziness away
                 </div>
                 <div id="container">
                 <audio  id='beep'  src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" preload="auto" ></audio>
-                <div class='labelbois'>
+                <div className='labelbois'>
                 <div  id='break-label'>Break<br/>
-                <button onClick={this.handleClick}  id="break-decrement"><i class="fas fa-arrow-circle-down"></i></button>
-                <button  onClick={this.handleClick} id='break-increment'><i class="fas fa-arrow-circle-up"></i></button>
-                <div id='break-length'>{this.state.break}</div></div>
+                <button class="btn btn-primary"  onClick={this.handleClick} id='break-increment'>up</button>
+                <div id='break-length'>{this.state.break}</div>
+                <button class="btn btn-primary" onClick={this.handleClick}  id="break-decrement">down</button>
+               
+                </div>
                 <div id="session-label">Session<br/>
-                <button onClick={this.handleClick}  id='session-decrement'><i class="fas fa-arrow-circle-down"></i></button>
-                <button onClick={this.handleClick}  id='session-increment'><i class="fas fa-arrow-circle-up"></i></button>
-                <div id='session-length'>{this.state.session}</div></div></div>
-               <div class='timebois'>
+           
+                <button class="btn  btn-primary" onClick={this.handleClick}  id='session-increment'>up</button>
+                <div id='session-length'>{this.state.session}</div>
+                <button class="btn btn-primary" onClick={this.handleClick}  id='session-decrement'>down</button>
+                </div></div>
+               <div className='timebois'>
                 <div id='timer-label'>{this.state.label}</div>
                <div id='time-left'>{this.state.min}:{this.state.sec}</div></div>
-                <button onClick={this.handleTimer}   id='start_stop'><i class="fas fa-play-circle"></i></button>
-                <button  onClick={this.handleClick} id='reset'><i class="fas fa-redo"></i></button>
+                <button class="btn  btn-primary" onClick={this.handleTimer}   id='start_stop'>Play</button>
+                <button class="btn  btn-primary"  onClick={this.handleClick} id='reset'>R</button>
 
             </div>
             </div>
