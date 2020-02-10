@@ -41,8 +41,11 @@
       background: none;
       outline: none;
       margin: 5px;
-      border: solid;
-      border-radius: 30%;
+      border: none;
+      line-height: 40px;
+      cursor: pointer;
+      font-weight: bolder;
+
       color: white;
     }
   
