@@ -1,6 +1,6 @@
 import React from 'react';
 //import ReactDOM from 'react-dom'
-import './App.css';
+import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 //import $ from "jQuery";
 import Pomodoro from './components/pomodoro';
